@@ -1,5 +1,5 @@
 # Implementation of AlexNet
-## This is just a replication of implementation for personal development. 
+## This is just a replication of implementation for personal understanding. 
 
 
 Source:
