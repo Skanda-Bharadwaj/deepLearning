@@ -9,7 +9,7 @@ def plot_training_loss(mini_batch_loss_list, num_epoch, iter_per_epoch,
     plt.figure()
     ax1 = plt.subplot(1, 1, 1)
     ax1.plot(range(len(mini_batch_loss_list)),
-             (mini_batch_loss_list), label='Minibatch Loss')
+             mini_batch_loss_list, label='Minibatch Loss')
 
     if len(mini_batch_loss_list) < 1000:
         ax1.set_ylim([0, np.max(mini_batch_loss_list[1000:])*1.5])

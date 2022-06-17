@@ -29,16 +29,16 @@ def train_model(model, num_epochs,
             mini_batch_loss_list.append(loss.item())
             if not batch_idx % logging_interval:
                 print(f'Epoch: {epoch+1:03d}/{num_epochs:03d}'
-                      f'| Batch {batch_idx:04d}/{len(train_loader):04d}'
-                      f'| Loss: {loss:.4f}')
+                      f' | Batch {batch_idx:04d}/{len(train_loader):04d}'
+                      f' | Loss: {loss:.4f}')
 
         model.eval()
         with torch.no_grad():
             train_acc = compute_accuracy(model, train_loader, device=device)
             valid_acc = compute_accuracy(model, valid_loader, device=device)
             print(f'Epoch: {epoch+1:03d}/{num_epochs:03d}'
-                  f'| Train: {train_acc:.2f}%'
-                  f'| Validation: {valid_acc:.2f}%')
+                  f' | Train: {train_acc:.2f}%'
+                  f' | Validation: {valid_acc:.2f}%')
             train_acc_list.append(train_acc.item())
             valid_acc_list.append(valid_acc.item())
 
