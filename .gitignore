@@ -1,0 +1,5 @@
+AlexNet/__pycache__
+vgg16Net/__pycache__
+__pycache__
+data/
+save_model/
