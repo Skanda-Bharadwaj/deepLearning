@@ -1,7 +1,6 @@
 import torch
 from torchvision import datasets
 from torchvision import transforms
-from torch.utils.data import sampler
 from torch.utils.data import DataLoader
 from torch.utils.data import SubsetRandomSampler
 
@@ -27,16 +26,16 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
     if test_transforms is None:
         test_transforms = transforms.ToTensor()
 
-    train_dataset = datasets.CIFAR10(root='data',
+    train_dataset = datasets.CIFAR10(root='../data',
                                      train=True,
                                      transform=train_transforms,
                                      download=True)
 
-    valid_dataset = datasets.CIFAR10(root='data',
+    valid_dataset = datasets.CIFAR10(root='../data',
                                      train=True,
                                      transform=train_transforms)
 
-    test_dataset  = datasets.CIFAR10(root='data',
+    test_dataset  = datasets.CIFAR10(root='../data',
                                      train=False,
                                      transform=train_transforms)
 

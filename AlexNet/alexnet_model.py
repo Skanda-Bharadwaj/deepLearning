@@ -1,6 +1,6 @@
 import torch
 
-class AleXNet(torch.nn.Module):
+class AlexNet(torch.nn.Module):
 
     def __init__(self, num_classes):
         super().__init__()
