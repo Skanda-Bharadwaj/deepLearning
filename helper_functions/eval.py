@@ -3,7 +3,6 @@ import torch
 import random
 import numpy as np
 from itertools import product
-#from distutils.version import LooseVersion as Version
 
 def set_seed(seed):
     os.environ["PL_GLOBAL_SEED"] = str(seed)
@@ -21,7 +20,8 @@ def compute_accuracy(model, data_loader, device):
             features = features.to(device)
             targets  = targets.float().to(device)
 
-            logits = model(features)
+            # Use **logits, _, _ = model(features)** for GoogLeNet to account for aux outputs
+            logits, _, _ = model(features)
             _, predicted_labels = torch.max(logits, 1)
 
             num_examples += targets.size(0)
@@ -40,7 +40,7 @@ def compute_confusion_matrix(model, data_loader, device):
             features = features.to(device)
             targets  = targets
 
-            logits = model(features)
+            logits, _, _ = model(features)
             _, predicted_labels = torch.max(logits, 1)
             all_targets.extend(targets.to('cpu'))
             all_predictions.extend(predicted_labels.to('cpu'))

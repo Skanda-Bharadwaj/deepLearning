@@ -78,3 +78,41 @@ def get_dataloaders_cifar10(batch_size, num_workers=0,
         return train_loader, valid_loader, test_loader
 
 
+def get_dataloaders_imagenet(batch_size, num_workers=0,
+                            train_transforms=None,
+                            test_transforms=None):
+
+    if train_transforms is None:
+        train_transforms = transforms.ToTensor()
+
+    if test_transforms is None:
+        test_transforms = transforms.ToTensor()
+
+    train_dataset = datasets.ImageFolder(root='../data/tiny-imagenet-200/train',
+                                         transform=train_transforms)
+
+    valid_dataset = datasets.ImageFolder(root='../data/tiny-imagenet-200/val',
+                                         transform=train_transforms)
+
+    test_dataset  = datasets.ImageFolder(root='../data/tiny-imagenet-200/test',
+                                         transform=train_transforms)
+
+    train_loader = DataLoader(dataset=train_dataset,
+                              batch_size=batch_size,
+                              num_workers=num_workers,
+                              drop_last=True)
+
+    valid_loader = DataLoader(dataset=valid_dataset,
+                              batch_size=batch_size,
+                              num_workers=num_workers,
+                              drop_last=True)
+
+    test_loader = DataLoader(dataset=test_dataset,
+                             batch_size=batch_size,
+                             num_workers=num_workers,
+                             shuffle=False,
+                             drop_last=True)
+
+    return train_loader, valid_loader, test_loader
+
+
